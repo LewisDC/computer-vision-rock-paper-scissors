@@ -15,3 +15,9 @@ Set up GitHub repo
 * Push the model and label to GitHub repo
 * Began documenting my experience
 
+## Milestone 3
+
+* Created a conda environment called the my_env and activated it
+* installed pip and the libraries opencv-python, tensorflow and ipykernel
+* created a requirements.txt file by running 'pip list > requirements.txt'
+  
