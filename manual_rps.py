@@ -6,7 +6,7 @@ def get_computer_choice():
     return str(computer_action)
 
 def get_user_choice():
-    user_action = input("Enter a choice (Rock, Paper, Scissors): ").capitalize()
+    user_action = input("Enter a choice (Rock, Paper, Scissors): ")
     return user_action
 
 def get_winner(computer_choice, user_choice):
@@ -15,7 +15,7 @@ def get_winner(computer_choice, user_choice):
     user_choice = user_choice.capitalize()
     if user_choice in valid_input:
         print(f"\nYou chose {user_choice}, computer chose {computer_choice}.\n")
-        if computer_choice.capitalize() == user_choice:
+        if computer_choice == user_choice:
             print("It is a tie!")
         elif computer_choice == "Rock":
             if user_choice == "Scissors":
@@ -43,7 +43,7 @@ def play():
             continue
 
         computer_choice = get_computer_choice()
-        get_winner(user_choice, computer_choice)
+        get_winner(computer_choice, user_choice)
 
         play_again = input("Play again? (y/n): ")
         if play_again.lower() != "y":
