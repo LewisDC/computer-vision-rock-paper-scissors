@@ -14,7 +14,7 @@ def get_winner(user_choice, computer_choice):
     if user_choice in valid_input:
         print(f"\nYou chose {user_choice}, computer chose {computer_choice}.\n")
         if computer_choice == user_choice:
-            print("It's a tie")
+            print("It is a tie!")
         elif computer_choice == "rock":
             if user_choice == "scissors":
                 print("You lost")
