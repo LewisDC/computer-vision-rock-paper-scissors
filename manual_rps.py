@@ -46,3 +46,5 @@ def play():
         play_again = input("Play again? (y/n): ")
         if play_again.lower() != "y":
             break
+
+play()
