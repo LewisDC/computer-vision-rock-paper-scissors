@@ -15,3 +15,16 @@ Set up GitHub repo
 * Push the model and label to GitHub repo
 * Began documenting my experience
 
+## Milestone 3
+
+* Created a conda environment called the my_env and activated it
+* installed pip and the libraries opencv-python, tensorflow and ipykernel
+* created a requirements.txt file by running 'pip list > requirements.txt'
+* tested files, unsure if result is what is intended but it did open the webcam
+
+## Milestone 4
+
+* Created functions to store the users and computers choices
+* Created function to figure out who won
+* Created function to simulate the game
+* Ran tests and debugged, seems to work as expected
