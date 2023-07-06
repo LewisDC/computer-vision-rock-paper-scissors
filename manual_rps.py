@@ -3,7 +3,7 @@ import random
 def get_computer_choice():
     possible_actions = ["Rock", "Paper", "Scissors"]
     computer_action = random.choice(possible_actions)
-    return computer_action
+    return str(computer_action)
 
 def get_user_choice():
     user_action = input("Enter a choice (Rock, Paper, Scissors): ").capitalize()
@@ -11,9 +11,11 @@ def get_user_choice():
 
 def get_winner(computer_choice, user_choice):
     valid_input = ("Rock","Paper", "Scissors")
+    computer_choice = computer_choice.capitalize()
+    user_choice = user_choice.capitalize()
     if user_choice in valid_input:
         print(f"\nYou chose {user_choice}, computer chose {computer_choice}.\n")
-        if computer_choice == user_choice:
+        if computer_choice.capitalize() == user_choice:
             print("It is a tie!")
         elif computer_choice == "Rock":
             if user_choice == "Scissors":
