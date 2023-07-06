@@ -9,7 +9,7 @@ def get_user_choice():
     user_action = input("Enter a choice (Rock, Paper, Scissors): ").capitalize()
     return user_action
 
-def get_winner(user_choice, computer_choice):
+def get_winner(computer_choice, user_choice):
     valid_input = ("Rock","Paper", "Scissors")
     if user_choice in valid_input:
         print(f"\nYou chose {user_choice}, computer chose {computer_choice}.\n")
@@ -46,5 +46,3 @@ def play():
         play_again = input("Play again? (y/n): ")
         if play_again.lower() != "y":
             break
-
-play()
