@@ -1,35 +1,35 @@
 import random
 
 def get_computer_choice():
-    possible_actions = ["rock", "paper", "scissors"]
+    possible_actions = ["Rock", "Paper", "Scissors"]
     computer_action = random.choice(possible_actions)
     return computer_action
 
 def get_user_choice():
-    user_action = input("Enter a choice (rock, paper, scissors): ").lower()
+    user_action = input("Enter a choice (Rock, Paper, Scissors): ").capitalize()
     return user_action
 
 def get_winner(user_choice, computer_choice):
-    valid_input = ("rock","paper", "scissors")
+    valid_input = ("Rock","Paper", "Scissors")
     if user_choice in valid_input:
         print(f"\nYou chose {user_choice}, computer chose {computer_choice}.\n")
         if computer_choice == user_choice:
             print("It is a tie!")
-        elif computer_choice == "rock":
-            if user_choice == "scissors":
+        elif computer_choice == "Rock":
+            if user_choice == "Scissors":
                 print("You lost")
             else:
-                print("You win!")
-        elif computer_choice == "scissors":
-            if user_choice == "paper":
+                print("You won!")
+        elif computer_choice == "Scissors":
+            if user_choice == "Paper":
                 print("You lost")
             else:
-                print("You win!")
-        elif computer_choice == "paper":
-            if user_choice == "rock":
+                print("You won!")
+        elif computer_choice == "Paper":
+            if user_choice == "Rock":
                 print("You lost")
             else:
-                print("You win!")
+                print("You won!")
     else: print("Invalid input, please try again!")
 
 def play():
