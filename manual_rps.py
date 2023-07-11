@@ -14,7 +14,7 @@ def get_winner(computer_choice, user_choice):
     computer_choice = computer_choice.capitalize()
     user_choice = user_choice.capitalize()
     if user_choice in valid_input:
-        print(f"\nYou chose {user_choice}, computer chose {computer_choice}.\n")
+        
         if computer_choice == user_choice:
             print("It is a tie!")
         elif computer_choice == "Rock":
@@ -32,6 +32,7 @@ def get_winner(computer_choice, user_choice):
                 print("You lost")
             else:
                 print("You won!")
+        print(f"\nYou chose {user_choice}, computer chose {computer_choice}.\n")
     else: print("Invalid input, please try again!")
 
 def play():
@@ -48,3 +49,5 @@ def play():
         play_again = input("Play again? (y/n): ")
         if play_again.lower() != "y":
             break
+
+play()
