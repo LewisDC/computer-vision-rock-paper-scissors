@@ -36,7 +36,7 @@ def get_computer_choice():
 
 def get_image():
     countdown()
-    end_time = time.time() + 1
+    end_time = time.time() + 3
     while time.time() < end_time: 
         ret, frame = cap.read()
         frame = cv2.flip(frame,1)
@@ -60,40 +60,55 @@ def get_winner(computer_choice, user_choice):
     if user_choice in valid_input:
         print(f"\nYou chose {user_choice}, computer chose {computer_choice}.\n")
         if computer_choice == user_choice:
-            print("It is a tie!")
+            return "It is a tie!"
         elif computer_choice == "Rock":
             if user_choice == "Scissors":
-                print("You lost")
+                return "You lost"
             else:
-                print("You won!")
+                return "You won!"
         elif computer_choice == "Scissors":
             if user_choice == "Paper":
-                print("You lost")
+                return "You lost"
             else:
-                print("You won!")
+                return "You won!"
         elif computer_choice == "Paper":
             if user_choice == "Rock":
-                print("You lost")
+                return "You lost"
             else:
-                print("You won!")
-    else: print("Invalid input, please try again!")
+                return "You won!"
+    else: 
+        return "Invalid input, please try again!"
+    
 
 def play():
-    while True:
+    computer_wins = 0
+    user_wins = 0
+    win = "won"
+    lose = "lost"
+
+    while computer_wins < 3 and user_wins < 3:
         try:
             user_choice = get_prediction()
         except TypeError as e:
-            print("Gesture not recognised, please try again!")
+            print("Invalid input, please try again!")
             continue
 
         computer_choice = get_computer_choice()
-        get_winner(computer_choice, user_choice)
+        result = get_winner(computer_choice, user_choice)
+        print(result)
+        if win in result:
+            user_wins += 1
+            print(f"You have won {user_wins} games and the computer has won {computer_wins} games")
+        if lose in result:
+            computer_wins += 1
+            print(f"You have won {user_wins} games and the computer has won {computer_wins} games")
 
-        play_again = input("Play again? (y/n): ")
-        if play_again.lower() != "y":
-            break
-
-
+    if computer_wins == 3:
+        print("The computer wins the match!")
+        print(f"{computer_wins} games to {user_wins}")
+    else: 
+        print("You have won the match!")
+        print(f"{user_wins} games to {computer_wins}")
 
 play()
 
