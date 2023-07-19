@@ -15,6 +15,9 @@ gesture_map = {
     3: "Nothing"
 }
 
+user = "user"
+computer = "computer"
+
 computer_wins = 0
 user_wins = 0
 
@@ -55,62 +58,79 @@ def get_prediction():
     user_prediction = mapper(index)
     return user_prediction
 
-def get_winner(computer_choice, user_choice):
+def get_user_choice():
     valid_input = ("Rock","Paper", "Scissors")
-    if user_choice in valid_input:
-        print(f"\nYou chose {user_choice}, computer chose {computer_choice}.\n")
-        if computer_choice == user_choice:
-            return "It is a tie!"
-        elif computer_choice == "Rock":
-            if user_choice == "Scissors":
-                return "You lost"
-            else:
-                return "You won!"
-        elif computer_choice == "Scissors":
-            if user_choice == "Paper":
-                return "You lost"
-            else:
-                return "You won!"
-        elif computer_choice == "Paper":
-            if user_choice == "Rock":
-                return "You lost"
-            else:
-                return "You won!"
-    else: 
-        return "Invalid input, please try again!"
-    
-
-def play():
-    computer_wins = 0
-    user_wins = 0
-    win = "won"
-    lose = "lost"
-
-    while computer_wins < 3 and user_wins < 3:
+    while True:
         try:
             user_choice = get_prediction()
+            if user_choice in valid_input:
+                return user_choice
+            else: print("Invalid input, please try again!")
+
         except TypeError as e:
             print("Invalid input, please try again!")
             continue
 
+def get_winner(computer_choice, user_choice):
+    
+    print(f"\nYou chose {user_choice}, computer chose {computer_choice}.\n")
+    if computer_choice == user_choice:
+        print("It is a tie!")
+    elif computer_choice == "Rock":
+        if user_choice == "Scissors":
+            print("You lost")
+            winner = "computer"
+            return winner
+        else:
+            print("You won!")
+            winner = "user"
+            return winner
+    elif computer_choice == "Scissors":
+        if user_choice == "Paper":
+            print("You lost")
+            winner = "computer"
+            return winner
+        else:
+            print("You won!")
+            winner = "user"
+            return winner
+    elif computer_choice == "Paper":
+        if user_choice == "Rock":
+            print("You lost")
+            winner = "computer"
+            return winner
+        else:
+            print("You won!")
+            winner = "user"
+            return winner
+        
+def track_wins():
+    computer_wins = 0
+    user_wins = 0
+
+    while True:
         computer_choice = get_computer_choice()
-        result = get_winner(computer_choice, user_choice)
-        print(result)
-        if win in result:
-            user_wins += 1
-            print(f"You have won {user_wins} games and the computer has won {computer_wins} games")
-        if lose in result:
+        user_choice = get_user_choice()
+        winner = get_winner(computer_choice, user_choice)
+        if winner == computer:
             computer_wins += 1
-            print(f"You have won {user_wins} games and the computer has won {computer_wins} games")
+        elif winner == user:
+            user_wins += 1
+        
+        print(f"You have won {user_wins} games and the computer has won {computer_wins} games")
 
-    if computer_wins == 3:
-        print("The computer wins the match!")
-        print(f"{computer_wins} games to {user_wins}")
-    else: 
-        print("You have won the match!")
-        print(f"{user_wins} games to {computer_wins}")
+        if computer_wins == 3:
+            print("The computer wins the match!")
+            print(f"{computer_wins} games to {user_wins}")
+            break
+        elif user_wins == 3: 
+            print("You have won the match!")
+            print(f"{user_wins} games to {computer_wins}")
+            break
 
-play()
+    print("Game Over")
+
+track_wins()
 
 # After the loop release the cap object
 cap.release()
