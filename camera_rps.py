@@ -41,7 +41,6 @@ class RockPaperScissorsGame:
         end_time = time.time() + 3
         while time.time() < end_time: 
             ret, frame = self.cap.read()
-            frame = cv2.flip(frame, 1)
             resized_frame = cv2.resize(frame, (224, 224), interpolation=cv2.INTER_AREA)
             image_np = np.array(resized_frame)
             normalized_image = (image_np.astype(np.float32) / 127.5) - 1 # Normalize the image
